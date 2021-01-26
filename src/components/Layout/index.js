@@ -5,6 +5,7 @@ export function Layout({ pageTitle, description, previewImage, currentURL, child
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content={description}></meta>
                 <meta charSet="utf-8" />
                 <title>{pageTitle}</title>
                 <meta property="og:url" content={currentURL} key="ogurl" />
