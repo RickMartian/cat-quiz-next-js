@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Widget, Footer, GitHubCorner, QuizBackground } from "../src/components";
+import { useRouter } from 'next/router';
+import { Widget, Footer, GitHubCorner, QuizBackground, QuizLogo, Layout } from "../src/components";
 import db from '../db.json';
 
 // const BackgroundImage = styled.div`
@@ -21,28 +22,37 @@ export const QuizContainer = styled.div`
 `
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <Widget>
-          <Widget.Header>
-            <h1>Gatinhos</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>lrem ipsum dolor sit amet..</p>
-          </Widget.Content>
-        </Widget>
-        <Widget>
-          <Widget.Header>
-            <h1>Quizes da galera</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>lrem ipsum dolor sit amet..</p>
-          </Widget.Content>
-        </Widget>
-        <Footer />
-      </QuizContainer>
-      <GitHubCorner projectUrl="" />
-    </QuizBackground>
+    <Layout
+      description="Página inicial do quiz sobre gatinhos feito na Imersão Alura v2."
+      pageTitle="Quiz sobre gatinhos"
+      currentURL={router.pathname}
+      previewImage={db.bg}
+    >
+      <QuizBackground backgroundImage={db.bg}>
+        <QuizContainer>
+          <QuizLogo />
+          <Widget>
+            <Widget.Header>
+              <h1>Gatinhos</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>lrem ipsum dolor sit amet..</p>
+            </Widget.Content>
+          </Widget>
+          <Widget>
+            <Widget.Header>
+              <h1>Quizes da galera</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>lrem ipsum dolor sit amet..</p>
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner projectUrl="" />
+      </QuizBackground>
+    </Layout>
   )
 }
